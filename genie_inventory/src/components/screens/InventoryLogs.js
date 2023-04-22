@@ -1,44 +1,12 @@
-// import React, { useState, useEffect } from 'react';
-// import InventoryLogs_Tab from '../called_components/screen_called/tabs/inventorylogs_tab';
-// import '../styles/inventorylogs.css';
-
-// const InventoryLogs = () => {
-//   const [localStorageData, setLocalStorageData] = useState([]);
-
-//   useEffect(() => {
-//     const localStorageItems = localStorage.getItem('products_list');
-//     if (localStorageItems) {
-//       setLocalStorageData(JSON.parse(localStorageItems));
-//     }
-//   }, []);
-
-//   return (
-//     <div className='cont'>
-//       <InventoryLogs_Tab/>
-//       <div className='inventorylogbox'>
-//         <text className='inventorylogtxt'>Inventory Logs</text>
-//         {localStorageData.map((data) => (
-
-//           <tex className='productssss'>{data.product_id}</tex>
-
-
-
-
-
-
-//         //  <p className='productssss'>{data.product_id},{data.product_name},{data.product_category},{data.expiry},{data.quantity}</p>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default InventoryLogs;
 import React, { useState, useEffect } from 'react';
 import InventoryLogs_Tab from '../called_components/screen_called/tabs/inventorylogs_tab';
 import '../styles/inventorylogs.css';
+import out from '../pics/sign_out.png'
+import Signout_dialog from '../called_components/screen_called/signout_dialog';
 
 const InventoryLogs = () => {
+  const [show , setShow] = useState(false)
+
   const [localStorageData, setLocalStorageData] = useState([]);
 
   useEffect(() => {
@@ -76,6 +44,17 @@ const InventoryLogs = () => {
           </tbody>
         </table>
       </div>
+      
+<button className='btnd' onClick={() => setShow(true)}>
+                    <img src = {out} className = 'siout'/>
+                    <text>Sign Out</text>
+                </button>
+            
+                {show && <Signout_dialog/>}
+                {show && 
+                <button className='nodialog' onClick={() => setShow(false)}>
+                    <text>no</text>
+                    </button>}
     </div>
   );
 };

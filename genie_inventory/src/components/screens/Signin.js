@@ -1,10 +1,34 @@
-import React from 'react'
+import React, {useState} from 'react'
 import logoo from '../pics/logoo.png'
 import '../styles/signInStyle.css'
 import { useNavigate } from 'react-router-dom'
 
 const Signin = () => {
   const navigate = useNavigate()
+
+  const [sign, setSign] = useState({
+   email: "",
+   password:"",
+  })
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setSign((prevState) => ({ ...prevState, [name]: value }));
+  };
+
+
+  const signin = () => {
+    if (sign.email === "" && sign.password === ""){
+        alert('wla kay ge butang')
+    }else{
+      if (sign.email === "" || sign.password === ""){
+        alert('wla nimo ge human')
+      }else{
+        navigate('/dashboard')
+      }
+    }
+  }
+
   return (
     <div className='container'>
         <div className='second'>
@@ -13,30 +37,28 @@ const Signin = () => {
             <input 
             type = "text"
             className = 'inputs' 
-            // onChange={checkUser}
+            name="email"
+            value={sign.email}
+            onChange={handleInputChange}
             required = 'required'
             />
             <span className='em'>User Name</span>
-            {/* <p className='msgcolor errorposition'>{error}</p> */}
 
             <input  
             type = "password" 
             className = 'inpu'
-            // onChange={checkPass}
+            name="password"
+            value={sign.password}
+            onChange={handleInputChange}
             required = 'required'
             />
             <span className='pas'>Password</span>
-            {/* <p className='msgcolor error1position'>{error1}</p> */}
 
-            <button className='btn' type='button' onClick={ () => navigate('/dashboard') }>
+            <button className='btn' type='button' onClick={ signin}>
                 <text className='txt'>
                     Sign In
                 </text>
             </button>
-            {/* <p className='msgcolor msgposition'>{msg}</p> */}
-
-            
-            
         </div>
     </div>
   )

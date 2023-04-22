@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import UploadPic from '../called_components/screen_called/uploadpic/UploadPic'
 import AddProd_Tab from '../called_components/screen_called/tabs/addprod_tab'
+import out from '../pics/sign_out.png'
+import Signout_dialog from '../called_components/screen_called/signout_dialog';
 import '../styles/addprod.css'
 import { useNavigate } from 'react-router-dom'
 
 const AddProd = () => {
   const navigate = useNavigate()
+  const [show , setShow] = useState(false)
 
   const [addproduct, setAddProduct] = useState({
     productID: "",
@@ -33,10 +36,10 @@ const AddProd = () => {
 
   const save = () => {
     if (addproduct.productID === "" && addproduct.productName === "" && addproduct.category === "" && addproduct.expirationDate === "" && addproduct.quantity === 0){
-        console.log('wla kay ge butang')
+        alert('wla kay ge butang')
     }else{
       if (addproduct.productID === "" || addproduct.productName === "" || addproduct.category === "" || addproduct.expirationDate === "" || addproduct.quantity === 0){
-        console.log('wla nimo ge human')
+        alert('wla nimo ge human')
       }else{
         var products_list = JSON.parse(localStorage.getItem('products_list') || "[]") 
         var list = [{
@@ -144,6 +147,17 @@ const AddProd = () => {
           <text className='savetext' >Save</text>
         </button>
       </div>
+
+      <button className='btnd' onClick={() => setShow(true)}>
+                    <img src = {out} className = 'siout'/>
+                    <text>Sign Out</text>
+                </button>
+            
+                {show && <Signout_dialog/>}
+                {show && 
+                <button className='nodialog' onClick={() => setShow(false)}>
+                    <text>no</text>
+                    </button>}
   </div>
   )
 }

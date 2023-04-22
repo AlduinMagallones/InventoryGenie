@@ -75,3 +75,35 @@
     color: white;
     text-shadow: 0px 6px 10px  black;
 }
+
+.btnd{
+    
+    position: absolute;
+    border-radius: 10px;
+    border-color: #a9a454;
+    top: 52rem;
+    left: 2rem;
+    width: 11rem;
+    height: 2rem;
+    color: white;
+    font-size:20px;
+    background: #a9a454;
+}
+
+.btnd:hover{
+    box-shadow: 5px 6px black;
+    transition: 0.6s;
+}
+
+.nodialog{
+    position: absolute;
+    height: 1.8rem;
+    width: 6rem;
+    left: 63rem;
+    top: 29rem;
+    color: white;
+    border-radius: 10px;
+    border-color: #556b2f;
+    background: #556b2f;
+    font-size: 18px;
+}

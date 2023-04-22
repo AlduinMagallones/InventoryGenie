@@ -1,16 +1,18 @@
-import React from 'react'
+import React,{useState} from 'react'
 import '../../style_called/dashboard_tab.css'
 import home from '../../../pics/home.png'
 import inv from '../../../pics/inventory.png'
 import inventorylogs from '../../../pics/inventory_logs.png'
 import search from '../../../pics/search.png'
 import logooo from '../../../pics/logoo.png'
-import out from '../../../pics/sign_out.png'
+
+
 import { useNavigate } from 'react-router-dom';
 
 
 const Dashboard_tab = () => {
     const navigate = useNavigate();
+
   return (
     <div className='con'>
         <div>
@@ -30,12 +32,8 @@ const Dashboard_tab = () => {
                 <button className={'tabhead se1'} onClick={()=> navigate('/search')}>
                     <img src={search} className='picss'/>
                 </button>
-
-            <button className='btnd' /*onClick={() => setShow(true)}*/>
-                <img src = {out} className = 'siout'/>
-                <text>Sign Out</text>
-            </button>
         </div>
+        
     </div>
   )
 }
